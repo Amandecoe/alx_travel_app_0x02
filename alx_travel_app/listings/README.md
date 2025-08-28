@@ -7,15 +7,15 @@ The main focus is on applying **RESTful API design principles** while ensuring e
 
 ---
 
-## 📚 Learning Objectives
+## 📚 Learning Objective
 
 By the end of this project, you should be able to:
 
 - Implement **ViewSets** in Django REST Framework to handle multiple model operations efficiently.
 - Configure **API routes** using DRF’s routers.
-- Apply **RESTful conventions** in endpoint design.
+- Apply **RESTful conventions** in endpoint design ands .
 - Document APIs with **Swagger** for interactive exploration.
-- Test APIs with **Postman** (or similar tools) to ensure correctness.
+- Test APIs with **Postman**/ Postman (or similar tools) to ensure correctness.
 
 ---
 
