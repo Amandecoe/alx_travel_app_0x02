@@ -11,6 +11,8 @@ from django.conf import settings
 import uuid
 
 CHAPA_URL = "https://api.chapa.co/v1/transaction/initialize"
+CHAPA_VERIFY_URL = "https://api.chapa.co/v1/transaction/verify/"
+
 class listingViewSet(viewsets.ModelViewset):
   queryset = Listing.Objects.all()
   serializer_class = ListingSerializer
@@ -65,3 +67,35 @@ class InitiatePaymentView(APIView):
       )
     else:
       return Response(response, status = status.HTTP_400_BAD_REQUEST)
+    
+class VerifyPaymentView(APIView):
+  def post(self, request):
+    tx_ref = request.data.get("tx_ref")
+    try:
+      payment = Payment.objects.get(tx_ref = tx_ref)    
+    except Payment.DoesNotExist:
+      return Response({"error": "Payment not found"}, status = status.HTTP_404_NOT_FOUND)  
+    headers = {
+      "Authorization": f"Bearer {settings.CHAPA_SECRET_KEY}",
+    }
+
+    #call chapa verify api
+    response = request.get(f"{CHAPA_VERIFY_URL}{tx_ref}", headers = headers)
+    if response.get("status") == "success":
+      chapa_status = response["data"]["status"]
+
+      #update payment status in our DB
+      if chapa_status.lower() == "successful":
+        payment.status = Payment.payment_status.CONFIRMED
+      else:
+        payment.status = Payment.PaymentStatus.PENDING
+
+      payment.save()
+
+      return Response({
+        "tx_ref":tx_ref,
+        "payment_status":payment.status,
+        "chapa_status":chapa_status
+      }, status=status.HTTP_200_OK)
+    else:
+      return Response({"error":response}, status = status.HTTP_400_BAD_REQUEST)    
