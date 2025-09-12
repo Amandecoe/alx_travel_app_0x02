@@ -3,9 +3,6 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-# --------------------------
-# Listing Model
-# --------------------------
 class Listing(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")
     title = models.CharField(max_length=255)
@@ -17,9 +14,7 @@ class Listing(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
-# --------------------------
-# Booking Model
-# --------------------------
+
 class Booking(models.Model):
     booking_id = models.PositiveIntegerField(primary_key=True, unique=True)
     listing = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name="bookings", null=True, blank = True)
@@ -35,18 +30,13 @@ class Booking(models.Model):
     status = models.CharField(max_length=10, choices=Status.choices, default=Status.PENDING)
 
 
-# --------------------------
-# Review Model
-# --------------------------
+
 class Review(models.Model):
     review_id = models.PositiveIntegerField(primary_key=True)
     rating = models.PositiveSmallIntegerField()
     comment = models.CharField(max_length=200)
 
 
-# --------------------------
-# Payment Model
-# --------------------------
 class Payment(models.Model):
     transaction_id = models.BigAutoField(primary_key=True)
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name="payments")
