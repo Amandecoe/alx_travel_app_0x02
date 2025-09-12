@@ -4,8 +4,8 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 #an object for the default router class
-router.register('listingviewset', listingViewSet, basename= 'listing')
-router.register ('bookingviewset', BookingViewSet, basename= 'Booking')
+router.register('listings', listingViewSet, basename= 'listing')
+router.register ('bookings', BookingViewSet, basename= 'booking')
 
 urlpatterns = [
     path('api/', include(router.urls)),   # 👈 include router-generated routes

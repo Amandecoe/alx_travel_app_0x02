@@ -30,7 +30,7 @@ class InitiatePaymentView(APIView):
     booking_id = request.data.get("booking_id")
     amount = request.data.get("amount")
     try:
-      booking = Booking.objects.get(id = booking_id)
+      booking = Booking.objects.get(booking_id=1)
     except Booking.DoesNotExist:
       return Response({"error": "Booking not found"}, status = status.HTTP_404_NOT_FOUND) 
 
@@ -39,7 +39,7 @@ class InitiatePaymentView(APIView):
     payload = {
       "amount":amount,
       "currency": "ETB",
-      "email": booking.owner.email,
+      "email": booking.listing.owner.email,
       "first_name": booking.owner.first_name,
       "last_name" : booking.owner.last_name,
       "tx_ref": tx_ref
