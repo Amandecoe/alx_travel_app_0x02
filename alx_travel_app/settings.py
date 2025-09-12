@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -80,11 +81,11 @@ WSGI_APPLICATION = 'alx_travel_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('alx_prodev'),
-        'USER': os.getenv('root'),
-        'PASSWORD': os.getenv('root'),
-        'HOST': os.getenv('DB_HOST', default='localhost'),
-        'PORT': os.getenv('DB_PORT', default='3306'),
+        'NAME': config('DB_NAME','alx_prodev'),
+        'USER': config('DB_USER','root'),
+        'PASSWORD': os.getenv('DB_PASSWORD','amanuelbehailu'),
+        'HOST': config( 'DB_HOST',default='localhost'),
+        'PORT': config( 'DB_PORT',default='3306'),
     }
 }
 
