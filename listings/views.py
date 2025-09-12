@@ -3,7 +3,6 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import ExampleSerializer
 from rest_framework import viewsets, status
 from .models import Listing, Booking, Payment
 from .serializers import ListingSerializer, BookingSerializer, PaymentSerializer
@@ -13,16 +12,16 @@ import uuid
 CHAPA_URL = "https://api.chapa.co/v1/transaction/initialize"
 CHAPA_VERIFY_URL = "https://api.chapa.co/v1/transaction/verify/"
 
-class listingViewSet(viewsets.ModelViewset):
-  queryset = Listing.Objects.all()
+class listingViewSet(viewsets.ModelViewSet):
+  queryset = Listing.objects.all()
   serializer_class = ListingSerializer
 
 
-class BookingViewSet(viewsets.ModelViewset):
+class BookingViewSet(viewsets.ModelViewSet):
   queryset = Booking.objects.all()
   serializer_class = BookingSerializer
 
-class PaymentViewSet(viewsets.ModelViewset):
+class PaymentViewSet(viewsets.ModelViewSet):
   queryset = Payment.objects.all()
   serializer_class = PaymentSerializer
 

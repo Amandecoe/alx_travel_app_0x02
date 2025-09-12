@@ -41,5 +41,5 @@ class Payment(models.Model):
   tx_ref = models.CharField(max_length = 255, null = True, blank = True) #stores the unique transaction reference sent to chapa
   chapa_txn_id = models.CharField(max_length=255, null= True, blank = True) #stores the checkout URL or chapa transaction ID
   status = models.CharField(max_length = 10, choices = payment_status.choices, default = payment_status.PENDING)
-  created_at = models.DateTimeField(auto_now__add=True)
+  created_at = models.DateTimeField(auto_now_add=True)
  

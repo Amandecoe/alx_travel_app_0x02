@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'alx_travel_app.listings',
+    'listings',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.getenv('alx_prodev'),
         'USER': os.getenv('root'),
-        'PASSWORD': os.get_handle_inheritableenv(''),
+        'PASSWORD': os.getenv(''),
         'HOST': os.getenv('DB_HOST', default='localhost'),
         'PORT': os.getenv('DB_PORT', default='3306'),
     }
