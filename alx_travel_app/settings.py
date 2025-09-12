@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.getenv('alx_prodev'),
         'USER': os.getenv('root'),
-        'PASSWORD': os.getenv(''),
+        'PASSWORD': os.getenv('root'),
         'HOST': os.getenv('DB_HOST', default='localhost'),
         'PORT': os.getenv('DB_PORT', default='3306'),
     }
