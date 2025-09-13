@@ -1,4 +1,4 @@
-# ALX Travel App
+# Travel App
 
 A Django-based travel booking application with integrated payment via Chapa. Users can create listings, make bookings, and pay for their bookings. The project also supports email notifications using Celery.
 
