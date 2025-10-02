@@ -40,15 +40,15 @@ Swagger documentation available for API endpoints.
 ## Project Setup
 ### Prerequisites
 
-Python 3.10+
+* Python 3.10+
 
-Django 4.x
+* Django 4.x
 
-Django REST Framework
+* Django REST Framework
 
-MySQL (via XAMPP or MariaDB)
+* MySQL (via XAMPP or MariaDB)
 
-Chapa Sandbox Account (for payment testing)
+* Chapa Sandbox Account (for payment testing)
 
 ## Clone the repository
 git clone <repository-url>
