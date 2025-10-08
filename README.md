@@ -6,7 +6,7 @@ A Django-based travel booking application with integrated payment via Chapa. Use
 
 ### Listings
 
-Create, view, and manage travel listings.
+Create, view, and manage Travel listings.
 
 Each listing is owned by a registered user.
 
